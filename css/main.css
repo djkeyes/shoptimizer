@@ -1,0 +1,94 @@
+/*
+* Authors: 
+* Heather Huynh
+*/
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+/*body {
+	background: url(../img/grocerybackground.png) no-repeat center center;
+		-webkit-background-size: 	cover;
+		-moz-background-size: 		cover;
+		-o-background-size: 		cover;
+	background-size: 				cover;
+	min-height: 100%;
+}*/
+
+.title {
+	text-transform: uppercase;
+	font-size: 500%;
+	font-weight: 500;
+	color: #fff;
+	text-align: center;
+	margin-top: 30px;
+	
+}
+
+#flying {
+	position:absolute;
+	left:0px;
+	top:0px;
+	text-transform: uppercase;
+	z-index:-1;
+	margin: 25px;
+	color: #e3e3e5;
+}
+
+section.landing {
+	background: url(../img/grocerybackground.png) no-repeat center center;
+		-webkit-background-size: 	cover;
+		-moz-background-size: 		cover;
+		-o-background-size: 		cover;
+	background-size: 				cover;
+	min-height: 100%;
+}
+
+.box {
+	width: 400px;
+	height:2.5em;
+	display: inline-block;
+	margin-right: 3em;
+	background: none;
+	font-size: 1em;
+	border: 2px solid #c2da00;
+	color: #fff;
+}
+
+.box:focus {
+	background: none;
+}
+
+.box::-webkit-input-placeholder {
+   color: #D8D8D8;
+}
+
+.box:-moz-placeholder { /* Firefox 18- */
+   color: #D8D8D8;  
+}
+
+.box::-moz-placeholder {  /* Firefox 19+ */
+   color: #D8D8D8;  
+}
+
+.box:-ms-input-placeholder {  
+   color: #D8D8D8; 
+}   
+
+.search {
+	padding: 0.7em 2em 0.7em 2em;
+	margin-bottom: 6em;
+	background: #c2da00;
+	border: none;
+	color: #fff;
+}
+
+.search:hover {
+	background: #abbf06;
+	transition: background 0.2s ease-in-out;   
+   
+section.landing .row:first-of-type {
+	position: relative;
+	height: 100%;
+}
