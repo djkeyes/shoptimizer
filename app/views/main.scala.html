@@ -22,8 +22,10 @@
 
 <div class="row text-center">
     <div id="guts">
-	<img src='@routes.Assets.at("images/logo.gif")'alt="Shoptimizer Logo">
-	<h1 class="title">Shoptimizer</h1>
+    <h1 class="title">Shoptimizer</h1>
+    
+	<img src='@routes.Assets.at("images/logo.gif")'alt="Shoptimizer Logo" style="width:100%">
+	
 
 	<form class="text-center">
 		<input type="string" name="food" placeholder="Search for Groceries" class="box" autocomplete="off">
@@ -33,9 +35,6 @@
 </div>
 </section>
 
-    <div class="container">
-        @content
-    </div>
 </body>
 
 </html>
