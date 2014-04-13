@@ -27,15 +27,15 @@ public class MainController extends Controller {
     public static Result doSearch(){
 		// TODO: we should probably make a Model object, if we want to use good practice. maybe.
 		DynamicForm requestData = Form.form().bindFromRequest();
-		String queryString = requestData.get("food");
-		String whichSearch = requestData.get("Search");
+		String queryString = requestData.get("food").toLowerCase();
+		String whichSearch = requestData.get("Search").toLowerCase();
 		String sortMethod = null, filterType = null, filterValue = null;
-		if(whichSearch.equals("SearchAgain")){
-			if(requestData.get("sorters").equals("price")){
+		if(whichSearch.toLowerCase().equals("SearchAgain".toLowerCase())){
+			if(requestData.get("sorters").toLowerCase().equals("price")){
 				sortMethod = "price asc";
-			} else if(requestData.get("sorters").equals("unit_price")){
+			} else if(requestData.get("sorters").toLowerCase().equals("unit_price")){
 				sortMethod = "unit_price asc";
-			} else if(requestData.get("sorters").equals("rating")){
+			} else if(requestData.get("sorters").toLowerCase().equals("rating")){
 				sortMethod = "rating asc";
 			}
 			
