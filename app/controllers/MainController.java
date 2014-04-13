@@ -57,9 +57,12 @@ public class MainController extends Controller {
 			output += sr + "\n";
 		}
 		
-		output += "DEBUG: " + "sortmethod: " + sortMethod + ", filterType: " + filterType + ", filterValue: " + filterValue + ", " + queryString + ", form data: " + requestData.toString() + ", grocery list: " + groceries.toString();
+		output +=  groceries.toString();
+		
+		// add suggestions based on fuzzy similarity to the search string
+		String suggestions="";
 	
-        return ok(views.html.display.render("Here's a list of groceries!",output));
+        return ok(views.html.display.render(output, "Your file", suggestions));
     }
 	
     // call to get the add-a-product page

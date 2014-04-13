@@ -49,6 +49,7 @@ public class SearchResult extends Model {
     }
     
     public String toString(){
-        return "[" + name + " for " + this.price + ", " + unitPrice + ", " + weight + ", " + organic + "]";
+	
+        return "\t" + name + " for \n" + this.price + " \t" + unitPrice + "\t " + weight + "\t " + organic + "\n";
     }
 }

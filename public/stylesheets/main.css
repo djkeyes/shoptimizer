@@ -6,11 +6,23 @@
 body, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans', sans-serif;
 }
+    body{
 
-body {
-	overflow: hidden;
-}
-
+        font-family:Helvetica, Arial, Verdana, sans-serif;
+  
+    }
+	    div{
+        clear:both!important;
+        display:block!important;
+        width:100%!important;
+        float:none!important;
+        margin:0!important;
+        padding:0!important;
+    }
+	 img{
+        max-width:100%;
+        height:auto;
+    }
 /*body {
 	background: url(../img/grocerybackground.png) no-repeat center center;
 		-webkit-background-size: 	cover;
@@ -39,12 +51,13 @@ body {
 	color: #e3e3e5;
 }
 
-section.landing {
+body{
 	background: url(../images/grocerybackground.png) no-repeat center center;
 		-webkit-background-size: 	cover;
 		-moz-background-size: 		cover;
 		-o-background-size: 		cover;
 	background-size: 				cover;
+	color:white;
 }
 
 .box {

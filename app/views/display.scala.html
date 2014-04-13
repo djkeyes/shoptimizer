@@ -1,9 +1,9 @@
-@(searchQuery: String)(content: String)
+@(content: String, title: String, suggestions: String)
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@searchQuery</title>
+    <title>@title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/normalize.less")'>
 		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/foundation.min.less")'>
@@ -23,35 +23,46 @@
     <div id="guts">
 	<img src='@routes.Assets.at("images/logo.gif")'alt="Shoptimizer Logo">
 	<h1 class="title">Shoptimizer</h1>
-
+<table>
+	<tr>
+	<td>
 	<form action="/display" method="post" class="text-center">
 	<fieldset>
 		<legend> Sort by</legend>
-		<label><input type="radio" name="sorters" value="price"></input> Price </label>
-		<label><input type="radio" name="sorters" value="unit_price"></input> unit price</label>
-		<label><input type="radio" name="sorters" value="rating"></input> rating </label>
+		<label><input type="checkbox" name="price"></input> Price </label>
+		<label><input type="checkbox" name="unitprice"></input> unit price</label>
+		<label><input type="checkbox" name="rating"></input> rating </label>
 	</fieldset>
 	
 	<fieldset>
 		<select name="filters">
-					<option selected value=" "> ----</option>
-					<option value="Publix" selected>Publix brand</option>
-					<option value="Bush">Bush's brand</option>
-					<option value="Goya">Goya brand</option>
-	
-			<option name="org">Organic</option>
+			      <option name="brand" selected>
+					<option name="publix" value="publix" > Publix</option>
+					<option name="bush" value="bush"> Bush</option>
+					<option name="goya" value="goya"> Goya </option>
+		            <option name="organic" value="organic">Organic</option>
 		</select>
 		</fieldset>
-		<input type="string" name="food" value="@searchQuery" placeholder="Search for Groceries" class="box" autocomplete="off">
+		<input type="string" name="food" placeholder="Search for Groceries" class="box" autocomplete="off">
 		
-		<input type="submit" name="Search" value="SearchAgain" class="search">
+		
+		<input type="submit" name="Search" value="Search" class="search">
 	</form>
 	</div>
-	<div class="container">
-		@content
-	</div>
 </div>
-</section>
+</td>
+<td>
+
+Suggestion
+
+</td>
+</tr>
+</table>
+
+    <div class="container" style="color:black">
+        @content
+    </div>
+	</section>
 </body>
 
 </html>
