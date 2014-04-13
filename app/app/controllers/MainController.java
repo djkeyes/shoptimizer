@@ -9,9 +9,6 @@ import models.SearchResult;
 public class MainController extends Controller {
     
     public static Result index() {
-		// first insert some groceries somehow
-		SearchResult sr = new SearchResult("asdfasdfasdf");
-		sr.save();
 		
         return ok(views.html.index.render("Hello from Java."));
     }
@@ -19,7 +16,12 @@ public class MainController extends Controller {
     public static Result doSearch(){
         String groceries = Searcher.performSearch("", "", "").toString();
         
-        return ok(views.html.index.render("Hello from Java. Groceries: " + groceries));
+        return ok(views.html.index.render("Here's a list of groceries: " + groceries));
     }
+	
+	public static Result addProduct() {
+		
+		return null;
+	}
     
 }
