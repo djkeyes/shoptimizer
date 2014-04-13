@@ -22,6 +22,6 @@ public class Searcher {
                              
         // better output: retrieve some elements from a database
         //Finder(primary key class, object class)
-        return new Model.Finder(Integer.class, SearchResult.class).orderBy(sortMethod).where().gt("order.id", 4).findList();  //.where(filters)
+        return new Model.Finder(Integer.class, SearchResult.class).query().orderBy("price desc").where().eq("organic", "organic").findList();
     }
 }

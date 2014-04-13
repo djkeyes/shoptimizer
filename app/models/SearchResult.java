@@ -45,9 +45,10 @@ public class SearchResult extends Model {
 		this.organic = organic;
 		this.location = location;
 		this.rating = rating;
+		this.price = price;
     }
     
     public String toString(){
-        return name + " for " + this.price;
+        return "[" + name + " for " + this.price + ", " + unitPrice + ", " + weight + ", " + organic + "]";
     }
 }
