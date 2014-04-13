@@ -4,26 +4,38 @@
 <html>
 <head>
     <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/normalize.less")'>
+		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/foundation.min.less")'>
+		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
-    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/index.css")'>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-</head>
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/bootstrap.min.less")'>
+ 
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.11.0.min.js")'></script>
+     <script type='text/javascript' src='@routes.Assets.at("javascripts/main.js")'></script>
+      <script type='text/javascript' src='@routes.Assets.at("javascripts/modernizr.js")'></script>
+      <script type='text/javascript' src='@routes.Assets.at("javascripts/dynamicpage.js")'></script>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/">@title</a>
-            </div>
-        </div>
-    </div>
-    <form action="/groceries" method="post">
-        <input name="name">
-        <input type="submit">
-    </form>
-    </div>
+    </html>
+
+<section id="landing" class="landing">
+
+<div class="row text-center">
+    <div id="guts">
+	<img src='@routes.Assets.at("images/logo.gif")'alt="Shoptimizer Logo">
+	<h1 class="title">Shoptimizer</h1>
+
+	<form class="text-center">
+		<input type="string" name="food" placeholder="Search for Groceries" class="box" autocomplete="off">
+		<input type="submit" value="Search" class="search">
+	</form>
+	</div>
+</div>
+</section>
+
     <div class="container">
         @content
     </div>
 </body>
+
 </html>
