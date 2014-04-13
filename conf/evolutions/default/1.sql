@@ -1,11 +1,18 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 # --- !Ups
 
 create table search_result (
-  name                      varchar(255) not null,
-  constraint pk_search_result primary key (name))
+  id                        integer not null,
+  brand                     varchar(255),
+  size                      double,
+  organic                   varchar(255),
+  price                     double,
+  unit_price                double,
+  weight                    double,
+  rating                    integer,
+  name                      varchar(255),
+  location                  varchar(255),
+  constraint pk_search_result primary key (id))
 ;
 
 create sequence search_result_seq;

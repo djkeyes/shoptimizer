@@ -1,0 +1,57 @@
+@(searchQuery: String)(content: String)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@searchQuery</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/normalize.less")'>
+		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/foundation.min.less")'>
+		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
+    <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/bootstrap.min.less")'>
+ 
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.11.0.min.js")'></script>
+     <script type='text/javascript' src='@routes.Assets.at("javascripts/main.js")'></script>
+      <script type='text/javascript' src='@routes.Assets.at("javascripts/modernizr.js")'></script>
+      <script type='text/javascript' src='@routes.Assets.at("javascripts/dynamicpage.js")'></script>
+<body>
+
+<section id="landing" class="landing">
+
+<div class="row text-center">
+    <div id="guts">
+	<img src='@routes.Assets.at("images/logo.gif")'alt="Shoptimizer Logo">
+	<h1 class="title">Shoptimizer</h1>
+
+	<form action="/display" method="post" class="text-center">
+	<fieldset>
+		<legend> Sort by</legend>
+		<label><input type="radio" name="sorters" value="price"></input> Price </label>
+		<label><input type="radio" name="sorters" value="unit_price"></input> unit price</label>
+		<label><input type="radio" name="sorters" value="rating"></input> rating </label>
+	</fieldset>
+	
+	<fieldset>
+		<select name="filters">
+					<option selected value=" "> ----</option>
+					<option value="Publix" selected>Publix brand</option>
+					<option value="Bush">Bush's brand</option>
+					<option value="Goya">Goya brand</option>
+	
+			<option name="org">Organic</option>
+		</select>
+		</fieldset>
+		<input type="string" name="food" value="@searchQuery" placeholder="Search for Groceries" class="box" autocomplete="off">
+		
+		<input type="submit" name="Search" value="SearchAgain" class="search">
+	</form>
+	</div>
+	<div class="container">
+		@content
+	</div>
+</div>
+</section>
+</body>
+
+</html>
