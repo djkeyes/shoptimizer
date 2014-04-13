@@ -12,7 +12,7 @@ import models.SearchResult;
 public class Searcher {
     
     // TODO how do we want to pass filters and sort specifications?
-    public static List<SearchResult> performSearch(String searchQuery, Object filters, Object sortMethod){
+    public static List<SearchResult> performSearch(String searchQuery, String filters, String sortMethod){
         // dummy output: always return the same list
         // return Arrays.asList(new SearchResult("Publix 8oz canned Garbanzo Beans"),
         //                      new SearchResult("Public 16oz canned Garbanzo Beans"),
@@ -22,6 +22,6 @@ public class Searcher {
                              
         // better output: retrieve some elements from a database
         //Finder(primary key class, object class)
-        return new Model.Finder(String.class, SearchResult.class).all(); 
+        return new Model.Finder(Integer.class, SearchResult.class).orderBy(sortMethod).where().gt("order.id", 4).findList();  //.where(filters)
     }
 }
