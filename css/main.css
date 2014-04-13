@@ -7,13 +7,16 @@ body, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans', sans-serif;
 }
 
+body {
+	overflow: hidden;
+}
+
 /*body {
 	background: url(../img/grocerybackground.png) no-repeat center center;
 		-webkit-background-size: 	cover;
 		-moz-background-size: 		cover;
 		-o-background-size: 		cover;
-	background-size: 				cover;
-	min-height: 100%;
+	background-size: 				100%;
 }*/
 
 .title {
@@ -22,7 +25,7 @@ body, h1, h2, h3, h4, h5, h6 {
 	font-weight: 500;
 	color: #fff;
 	text-align: center;
-	margin-top: 30px;
+	margin-top: 10px;
 	
 }
 
@@ -42,7 +45,6 @@ section.landing {
 		-moz-background-size: 		cover;
 		-o-background-size: 		cover;
 	background-size: 				cover;
-	min-height: 100%;
 }
 
 .box {
@@ -50,6 +52,7 @@ section.landing {
 	height:2.5em;
 	display: inline-block;
 	margin-right: 3em;
+	margin-bottom: 0;
 	background: none;
 	font-size: 1em;
 	border: 2px solid #c2da00;
