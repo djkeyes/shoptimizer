@@ -12,16 +12,20 @@ import models.SearchResult;
 public class Searcher {
     
     // TODO how do we want to pass filters and sort specifications?
-    public static List<SearchResult> performSearch(String searchQuery, String filters, String sortMethod){
-        // dummy output: always return the same list
-        // return Arrays.asList(new SearchResult("Publix 8oz canned Garbanzo Beans"),
-        //                      new SearchResult("Public 16oz canned Garbanzo Beans"),
-        //                      new SearchResult("Bush's 8oz canned Chickpeas"),
-        //                      new SearchResult("Goya 16oz organic canned Chickpeas"));
-                             
-                             
+	// for now only allow one filter at a time.
+    public static List<SearchResult> performSearch(String searchQuery, String filterType, String filterValue, String sortMethod){
+		
         // better output: retrieve some elements from a database
         //Finder(primary key class, object class)
-        return new Model.Finder(Integer.class, SearchResult.class).query().orderBy("price desc").where().eq("organic", "organic").findList();
+		if(filterType.equals("") || filterValue.equals("") ){
+			return new Model.Finder(Integer.class, SearchResult.class)
+				.query().where().contains("name", searchQuery).orderBy(sortMethod).findList();
+		} else {
+			return new Model.Finder(Integer.class, SearchResult.class)
+				.query().where().contains("name", searchQuery).where().eq(filterType, filterValue).orderBy(sortMethod).findList();
+		}
+		
+		// example:
+        //return new Model.Finder(Integer.class, SearchResult.class).query().orderBy("price desc").where().eq("organic", "organic").findList();
     }
 }

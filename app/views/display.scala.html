@@ -1,9 +1,9 @@
-@(title: String)(content: Html)
+@(searchQuery: String)(content: String)
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@title</title>
+    <title>@searchQuery</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/normalize.less")'>
 		<link rel="stylesheet" href='@routes.Assets.at("stylesheets/foundation.min.less")'>
@@ -16,7 +16,6 @@
       <script type='text/javascript' src='@routes.Assets.at("javascripts/modernizr.js")'></script>
       <script type='text/javascript' src='@routes.Assets.at("javascripts/dynamicpage.js")'></script>
 <body>
-    </html>
 
 <section id="landing" class="landing">
 
@@ -26,9 +25,30 @@
 	<h1 class="title">Shoptimizer</h1>
 
 	<form action="/display" method="post" class="text-center">
-		<input type="string" name="food" placeholder="Search for Groceries" class="box" autocomplete="off">
-		<input type="submit" name="Search" value="Search" class="search">
+	<fieldset>
+		<legend> Sort by</legend>
+		<label><input type="radio" name="sorters" value="price"></input> Price </label>
+		<label><input type="radio" name="sorters" value="unit_price"></input> unit price</label>
+		<label><input type="radio" name="sorters" value="rating"></input> rating </label>
+	</fieldset>
+	
+	<fieldset>
+		<select name="filters">
+					<option selected value=" "> ----</option>
+					<option value="Publix" selected>Publix brand</option>
+					<option value="Bush">Bush's brand</option>
+					<option value="Goya">Goya brand</option>
+	
+			<option name="org">Organic</option>
+		</select>
+		</fieldset>
+		<input type="string" name="food" value="@searchQuery" placeholder="Search for Groceries" class="box" autocomplete="off">
+		
+		<input type="submit" name="Search" value="SearchAgain" class="search">
 	</form>
+	</div>
+	<div class="container">
+		@content
 	</div>
 </div>
 </section>

@@ -37,13 +37,13 @@ public class SearchResult extends Model {
             String brand, double price, String organic, String location,
             int rating){
 		this.id = id;
-        this.name = name;
+        this.name = name.toLowerCase();
         this.unitPrice = unitPrice;
         this.weight = weight;
-		this.brand = brand;
+		this.brand = brand.toLowerCase();
 		this.size = size;
-		this.organic = organic;
-		this.location = location;
+		this.organic = organic.toLowerCase();
+		this.location = location.toLowerCase();
 		this.rating = rating;
 		this.price = price;
     }

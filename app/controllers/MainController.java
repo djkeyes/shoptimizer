@@ -9,12 +9,14 @@ import search.Searcher;
 import models.SearchResult;
 
 import java.util.List;
+import java.util.LinkedList;
 
 public class MainController extends Controller {
+
     
     // call to get the start page
     public static Result index() {
-		// TODO: render a pretty start page
+    	// TODO: render a pretty start page
         return ok(views.html.index.render("Hello from Java."));
     }
     
@@ -25,23 +27,39 @@ public class MainController extends Controller {
     public static Result doSearch(){
 		// TODO: we should probably make a Model object, if we want to use good practice. maybe.
 		DynamicForm requestData = Form.form().bindFromRequest();
-		String queryString = requestData.get("query");
-		String sortMethod = requestData.get("sortBy"); // I guess this can be a string
-		// should this be group of radio buttons or something?
-		String filters = requestData.get("filters"); // for now just supply a string specifying the type of filter
+		String queryString = requestData.get("food");
+		String whichSearch = requestData.get("Search");
+		String sortMethod = null, filterType = null, filterValue = null;
+		if(whichSearch.equals("SearchAgain")){
+			if(requestData.get("sorters").equals("price")){
+				sortMethod = "price asc";
+			} else if(requestData.get("sorters").equals("unit_price")){
+				sortMethod = "unit_price asc";
+			} else if(requestData.get("sorters").equals("rating")){
+				sortMethod = "rating asc";
+			}
+			
+			filterType = "brand";
+			filterValue = requestData.get("filters");// for now just supply a string specifying the type of filter
+		} else {
+			sortMethod = "price asc";
+			filterType = "";
+			filterValue = "";
+		}
+		filterType = "";
+		filterValue = "";
 		
-		// for now, hardcode:
-		sortMethod = "name asc";
-		filters = "";
 		// these are returned in sorted order
 		// TODO: maybe we should return several maps of item=>prices, item=>unitPrice, item=>rating, etc, and then dynamically sort them using javascript
-        List<SearchResult> groceries = Searcher.performSearch(queryString, sortMethod, filters);
+        List<SearchResult> groceries = Searcher.performSearch(queryString, filterType, filterValue, sortMethod);
 		String output= "";
 		for(SearchResult sr : groceries){
 			output += sr + "\n";
 		}
+		
+		output += "DEBUG: " + "sortmethod: " + sortMethod + ", filterType: " + filterType + ", filterValue: " + filterValue + ", " + queryString + ", form data: " + requestData.toString() + ", grocery list: " + groceries.toString();
 	
-        return ok(views.html.index.render("Here's a list of groceries: " + output + ", " + sortMethod));
+        return ok(views.html.display.render("Here's a list of groceries!",output));
     }
 	
     // call to get the add-a-product page
@@ -62,14 +80,16 @@ public class MainController extends Controller {
 		String queryString =""; //= requestData.get("query");
 		String sortMethod;// = requestData.get("sortBy"); // I guess this can be a string
 		// should this be group of radio buttons or something?
-		String filters;// = requestData.get("filters"); // for now just supply a string specifying the type of filter
+		String filterType;// = requestData.get("filters"); // for now just supply a string specifying the type of filter
+		String filterValue;// = requestData.get("filters");
 		
 		// for now, hardcode:
-		sortMethod = "name asc";
-		filters = "";
+		sortMethod = "unitPrice asc";
+		filterType = "organic";
+		filterValue = "not";
 		// these are returned in sorted order
 		// TODO: maybe we should return several maps of item=>prices, item=>unitPrice, item=>rating, etc, and then dynamically sort them using javascript
-        List<SearchResult> groceries = Searcher.performSearch(queryString, sortMethod, filters);
+        List<SearchResult> groceries = Searcher.performSearch(queryString, filterType, filterValue, sortMethod);
 		String output= "";
 		for(SearchResult sr : groceries){
 			output += sr + "|";
@@ -77,6 +97,5 @@ public class MainController extends Controller {
 		
 		// now return the rendered list
 		return ok(views.html.add.render(output));
-	}
-    
+	}    
 }

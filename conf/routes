@@ -3,7 +3,7 @@
 # ~~~~
 
 GET     /                           controllers.MainController.index()
-POST    /groceries                  controllers.MainController.doSearch()
+POST    /display                    controllers.MainController.doSearch()
 GET     /add                        controllers.MainController.addProductPage()
 POST    /add                        controllers.MainController.addProduct()
 
