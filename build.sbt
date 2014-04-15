@@ -1,4 +1,4 @@
-name := """hello-play"""
+name := """shoptimizer"""
 
 version := "1.0-SNAPSHOT"
 
