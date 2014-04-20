@@ -16,3 +16,6 @@ dist
 /project/*-shim.sbt
 /activator-sbt-atmos-akka-shim.sbt
 /activator-sbt-echo-play-shim.sbt
+/.target
+/bin
+/.cache
